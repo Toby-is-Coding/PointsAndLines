@@ -11,7 +11,16 @@ void buildPoint(Point* currentPoint);
 Point* buildArray(int* amountOfPoints)
 {
 	cout << "How many points will we make?" << endl;
-	cin >> *amountOfPoints;
+	bool legalValue = false;
+	while (!legalValue) {
+		cin >> *amountOfPoints;
+		if (*amountOfPoints <= 0) {
+			cout << RED <<"Illegal value." << NRM << endl;
+		}
+		else {
+			legalValue = true;
+		}
+	}
 	Point* points = new Point[*amountOfPoints];
 	for (int i = 0; i < *amountOfPoints; i++) {
 		buildPoint(&points[i]);
@@ -54,6 +63,8 @@ int main()
 {
 	int amountOfPoints;
 	Point* ptr_to_array = buildArray(&amountOfPoints);
+	int nLines;
+	//for loop to create the lines
 
 	display(ptr_to_array, amountOfPoints);
 
