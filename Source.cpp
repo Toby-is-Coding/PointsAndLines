@@ -1,12 +1,12 @@
 #include <iostream>
 #include "Point.h"
+#include "Line.h"
 #include "Colours.h"
 
 using namespace std;
 
 Point* buildArray(int* amountOfPoints);
 void buildPoint(Point* currentPoint);
-void display(Point* points, int amountOfPoints);
 
 Point* buildArray(int* amountOfPoints)
 {
@@ -54,25 +54,9 @@ int main()
 {
 	int amountOfPoints;
 	Point* ptr_to_array = buildArray(&amountOfPoints);
+
 	display(ptr_to_array, amountOfPoints);
 
 	delete[] ptr_to_array;
 	return 0;
-}
-
-void display(Point* points, int amountOfPoints)
-{
-	char currentChar;
-	for (int i = 0; i <= points[0].getMax_Y(); i++) { //for each column (y)
-		for (int j = 0; j <= points[0].getMax_X(); j++) { //for each row (x)
-			currentChar = ' ';
-			for (int p = 0; p < amountOfPoints; p++) { //for each point
-				if (points[p].getY() == i && points[p].getX() == j) {
-					currentChar = 'o';
-				}
-			}
-			cout << currentChar;
-		}
-		cout << endl;
-	}
 }
